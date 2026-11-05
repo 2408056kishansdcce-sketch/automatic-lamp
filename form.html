@@ -17,3 +17,83 @@
 </body>
 </html>
     
+<!-- How to Open PowerShell
+1.	Click Start.
+2.	Type PowerShell.
+3.	Open Windows PowerShell.
+4.	For service-management tasks, use Run as administrator if required.
+
+1. Check the Current Directory
+Get-Location
+Displays the directory in which PowerShell is currently operating.
+Example result: C:\Users\Student.
+2. List Files and Folders
+Get-ChildItem
+Lists files and subfolders in the current directory.
+Aliases: dir and ls.
+3. Create a Folder
+New-Item -Path "C:\CloudLab" -ItemType Directory
+Creates a folder named CloudLab.
+Verify using: Get-ChildItem C:\
+4. Create a Text File
+New-Item -Path "C:\CloudLab\student.txt" -ItemType File
+Creates an empty text file.
+Add text using: "Cloud Computing Practical" | Out-File "C:\CloudLab\student.txt"
+5. Read the File
+Get-Content "C:\CloudLab\student.txt"
+Displays the file contents.
+6. Create a Backup Folder
+New-Item -Path "C:\CloudLab\Backup" -ItemType Directory
+Creates the Backup subfolder.
+7. Copy a File
+Copy-Item "C:\CloudLab\student.txt" "C:\CloudLab\Backup\student.txt"
+Copies the file into Backup.
+8. Rename a File
+Rename-Item "C:\CloudLab\student.txt" "cloud.txt"
+Changes the file name to cloud.txt.
+9. Move a File
+Move-Item "C:\CloudLab\cloud.txt" "C:\CloudLab\Backup\"
+Moves cloud.txt into Backup.
+10. Delete a File
+Remove-Item "C:\CloudLab\Backup\cloud.txt"
+Deletes the selected file.
+Use carefully; it does not move the file to the Recycle Bin.
+
+Part B — Process Management
+11. View Running Processes
+Get-Process
+Displays processes currently running on Windows.
+12. Find a Particular Process
+Get-Process chrome
+Displays Chrome if it is running. Otherwise choose a process shown by Get-Process.
+13. Filter Processes by CPU Time
+Get-Process | Where-Object {$_.CPU -gt 100}
+Shows processes whose reported CPU time is greater than 100 seconds; results vary by system.
+14. Start a Process
+Start-Process notepad
+Starts Microsoft Notepad.
+15. Stop a Process
+Get-Process notepad
+Stop-Process -Name notepad
+Identifies and then stops Notepad. Use this only with a process intentionally started for the exercise.
+
+
+Part D — Basic PowerShell Automation
+Automation is an important connection between this practical and cloud computing. A script can perform repetitive administrative work consistently with less manual effort.
+22. Create a Backup Folder
+New-Item "C:\CloudLab\Backup" -ItemType Directory -Force
+The -Force option allows the command to continue if the folder already exists.
+23. Create Sample Data
+"Important student data" | Out-File "C:\CloudLab\data.txt"
+Creates data.txt and writes sample text into it.
+24. Copy Data into Backup
+Copy-Item "C:\CloudLab\data.txt" "C:\CloudLab\Backup\" -Force
+Copies the file into Backup; -Force permits overwriting an existing copy.
+25. Create the Backup Script
+New-Item "C:\CloudLab\Backup" -ItemType Directory -Force Copy-Item "C:\CloudLab\*.txt" "C:\CloudLab\Backup\" -Force
+Write-Host "Backup completed successfully."
+Save these commands as backup.ps1. The script creates the Backup folder, copies all .txt files from CloudLab, and displays a completion message.
+26. Execute the Script
+cd "C:\CloudLab" .\backup.ps1
+
+If Windows blocks script execution because of execution policy, the instructor should configure an appropriate policy in the controlled lab environment rather than students changing security settings on their own. -->
